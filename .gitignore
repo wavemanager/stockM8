@@ -1,0 +1,11 @@
+.env
+.vscode/
+.variables.txt
+# Python-specific
+__pycache__/
+*.pyc
+venv/
+env/
+# Mac/Windows
+.DS_Store
+Thumbs.db
