@@ -10,4 +10,3 @@ Dieses Projekt benötigt eine `.env`-Datei mit den folgenden Variablen:
    ```bash
    cp .env_example .env
 
-   abc
