@@ -1,15 +1,12 @@
-# Git-Verzeichnis
+
 .git/
 .env
-# Docker
 Dockerfile
 .dockerignore
-# Python Cache und virtuelle Umgebungen
 __pycache__/
 *.pyc
 venv/
 env/
-# Systemdateien von macOS & Windows
 .DS_Store
 Thumbs.db
 .vscode/

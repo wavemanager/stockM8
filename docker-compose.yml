@@ -1,0 +1,74 @@
+version: "3.8"
+
+services:
+  # Service 1: n8n (local, exposed via localtunnel)
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n_main_service
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    environment:
+      - N8N_DIAGNOSTICS_ENABLED=false
+      - N8N_METRICS=false
+      - WEBHOOK_URL=https://n8n-stockm8.loca.lt
+
+  # Localtunnel for n8n webhooks (exposes n8n to internet)
+  localtunnel:
+    image: boro/localtunnel-client
+    container_name: n8n_tunnel
+    restart: unless-stopped
+    command: --port 5678 --subdomain n8n-stockm8
+    network_mode: "service:n8n"
+    depends_on:
+      - n8n
+
+  # Service 2: finance_agent_1
+  agent-01:
+    build:
+      context: ./services/finance_agent_1
+    container_name: agent_01_api_service
+    restart: unless-stopped
+    ports:
+      - "8001:80"
+    env_file:
+      - .env
+
+  # Service 3: Stock Charts & Info Agent
+  stock-chart-agent:
+    build:
+      context: ./services/stock_chart_agent
+    container_name: stock_chart_api_service
+    restart: unless-stopped
+    ports:
+      - "8002:80"
+    env_file:
+      - .env
+
+  # Service 4: Alpaca Account Agent (Account Info & Positions)
+  alpaca-account:
+    build:
+      context: ./services/alpaca_account_agent
+    container_name: alpaca_account_api_service
+    restart: unless-stopped
+    ports:
+      - "8003:80"
+    env_file:
+      - .env
+
+  # Service 5: Stock Comparison Agent (Compare 2 Stocks)
+  stock-comparison:
+    build:
+      context: ./services/stock_comparison_agent
+    container_name: stock_comparison_api_service
+    restart: unless-stopped
+    ports:
+      - "8004:80"
+    env_file:
+      - .env
+
+volumes:
+  n8n_data:
+    external: true

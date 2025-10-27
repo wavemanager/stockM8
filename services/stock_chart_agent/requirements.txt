@@ -1,0 +1,13 @@
+# FastAPI and server
+fastapi==0.120.0
+uvicorn==0.38.0
+pydantic==2.12.3
+
+# Alpaca SDK
+alpaca-py==0.43.0
+
+# Data processing
+pandas==2.3.3
+
+# Environment variables
+python-dotenv==1.1.1
