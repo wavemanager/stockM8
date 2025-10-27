@@ -7,7 +7,6 @@ StockM8 is a production-ready stock market assistant that combines multiple spec
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115.5-009688.svg)](https://fastapi.tiangolo.com/)
 [![Python](https://img.shields.io/badge/Python-3.10+-3776AB.svg)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
@@ -90,41 +89,34 @@ StockM8 is a **microservices-based** trading assistant that uses:
 
 ## 🛠️ Technology Stack
 
-### Backend Framework
+### Backend
 
-- **FastAPI 0.115.5**: Modern async Python web framework
+- **FastAPI**: Modern async Python web framework
   - Automatic OpenAPI documentation
   - Pydantic validation
-  - High performance (comparable to Node.js/Go)
-  - Type hints for better IDE support
+- **Agno Framework** - AI agent orchestration and tool integration
+- **Uvicorn** - High-performance ASGI server
+- **Pydantic** - Automatic JSON validation
 
-### AI & Machine Learning
+### AI´s & (future Machine Learning Models)
 
-- **Google Gemini 2.0**: Advanced LLM for market analysis
-- **Agno Framework**: Agent orchestration & tool integration
+- **Google Gemini flash-2.0**: Advanced LLM for market analysis
 - **YFinance Tools**: Real-time market data access
+- **(Trained Models in future...)**
 
 ### Trading & Market Data
 
 - **Alpaca Markets API**: Commission-free trading
   - Paper trading environment (no real money)
   - Real-time market data
-  - REST & WebSocket support
-- **Pandas 2.2.3**: Financial data analysis
+  - **Pandas** - Financial data processing
 
-### Infrastructure
+### Infrastructure & Automation
 
 - **Docker & Docker Compose**: Containerized microservices
-- **Python 3.10+**: Modern Python features
-- **Uvicorn**: Lightning-fast ASGI server
-- **Requests**: HTTP client for inter-service communication
-
-### Automation & Integration
-
-- **n8n**: Low-code workflow automation
-- **Localtunnel**: Secure webhook tunneling
-- **Telegram Bot API**: Chat interface
-- **WhatsApp Business API**: Messaging integration
+- **n8n**
+- **Telegram/WhatsApp APIs** - Multi-platform chat integration
+- **Localtunnel** - Secure webhook tunneling
 
 ---
 
