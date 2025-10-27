@@ -69,6 +69,34 @@ services:
     env_file:
       - .env
 
+  # Service 6: Stock Ordering Agent (Place Orders)
+  stock-ordering:
+    build:
+      context: ./services/stock_ordering_agent
+    container_name: stock_ordering_api_service
+    restart: unless-stopped
+    ports:
+      - "8005:80"
+    env_file:
+      - .env
+
+  # Service 7: Master Orchestrator Agent (Routes to all experts)
+  orchestrator:
+    build:
+      context: ./services/orchestrator_agent
+    container_name: orchestrator_api_service
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    env_file:
+      - .env
+    depends_on:
+      - agent-01
+      - stock-chart-agent
+      - alpaca-account
+      - stock-comparison
+      - stock-ordering
+
 volumes:
   n8n_data:
     external: true

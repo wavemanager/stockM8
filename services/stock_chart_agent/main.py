@@ -5,8 +5,11 @@ from alpaca.trading.requests import GetOrdersRequest
 from alpaca.trading.enums import QueryOrderStatus
 
 # --- 1. Loads the API-Keys out of the .env file ---
-# Make sure you have a .env file in the same folder with:
-load_dotenv()
+
+
+# .env-Datei aus dem Hauptverzeichnis laden
+dotenv_path = os.path.join(os.path.dirname(__file__), '../../.env')
+load_dotenv(dotenv_path=dotenv_path)
 
 # --- 2. Initialize the Trading Client ---
 # The client automatically reads the keys from the environment variables.
