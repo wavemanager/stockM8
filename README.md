@@ -9,3 +9,5 @@ Dieses Projekt benötigt eine `.env`-Datei mit den folgenden Variablen:
 1. Kopiere `.env_example` nach `.env`:
    ```bash
    cp .env_example .env
+
+   abc
